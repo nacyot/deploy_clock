@@ -218,9 +218,10 @@ resource "aws_key_pair" "web_admin" {
 
 `terraform apply`로 키 페어를 추가해줍니다.
 
-`ec2.tf`에서 처음에 작성 `aws_instance.clock01` 리소스의 내용을 다음과 같이 변경합니다. `vpc_security_group_ids`와 `key_name`이 추가되었습니다.
+`ec2.tf`에서 처음에 작성 `aws_instance.clock` 리소스의 내용을 다음과 같이 변경합니다. `vpc_security_group_ids`와 `key_name`이 추가되었습니다.
+
 ```
-resource "aws_instance" "clock01" {
+resource "aws_instance" "clock" {
   ami           = "ami-0b5edf72c627a56c9"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2.id]
@@ -373,9 +374,9 @@ resource "aws_lb_listener" "clock_http" {
 `elb.tf`에 다음 내용을 추가합니다.
 
 ```
-resource "aws_lb_target_group_attachment" "clock01" {
+resource "aws_lb_target_group_attachment" "clock" {
   target_group_arn = aws_lb_target_group.clock.arn
-  target_id        = aws_instance.clock01.id
+  target_id        = aws_instance.clock.id
   port             = 80
 }
 ```
