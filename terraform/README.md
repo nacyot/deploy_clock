@@ -208,8 +208,8 @@ resource "aws_security_group" "ec2" {
 
 키페어 추가를 위해 다음 내용을 `ec2.tf`에 추가합니다.
 ```
-resource "aws_key_pair" "web_admin" {
-  key_name = "web_admin"
+resource "aws_key_pair" "admin" {
+  key_name = "admin"
   public_key = "${file("~/.ssh/id_rsa.pub")}"
 }
 ```
