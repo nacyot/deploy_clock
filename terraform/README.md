@@ -105,7 +105,7 @@ $ cat terraform.tfstate
 
 ```
 provider "aws" {
-  region     = "us-west-2"
+  region     = "ap-northeast-2"
   access_key = "my-access-key"
   secret_key = "my-secret-key"
 }
